@@ -47,16 +47,32 @@ type Cuisn =
     | Turkishhh
 
 type Movietype =
-    | Rgl
+    | Regular
     | IMAX
     | DBOX
-    | Rglwithsnks
-    | IMAXwithsnks
-    | DBOXwithsnks
+    | RegularWithSnacks
+    | IMAXWithSnacks
+    | DBOXWithSnacks
 
-type Actvty
-    | Brdgames
+type Actvty = 
+    | BoardGames
     | Chill
     | Movie of Movietype
     | Restaurant of Cuisn
-    | Longdrive of int * float
+    | LongDrive of int * float
+
+let calculatebudget Actvty = 
+    match Actvty  with 
+    | BoardGame -> 10.0
+    | Chill -> 0.0
+    | Movie Regular -> 12.0
+    | Movie IMAX -> 17.0
+    | Movie DBOX -> 20.0
+    | Movie _ -> 12.0 + 5.0
+    | Restaurant Koreannn -> 70.0
+    | Restaurant Turkishhh -> 65.0
+    | LongDrive (kilometres, fuelcharge) -> float kilometres * fuelcharge
+
+let eveningActvty = Restaurant Turkishhh
+let budget = calculatebudget eveningActvty
+printfn "Est budget: %.2f CAD" budget
