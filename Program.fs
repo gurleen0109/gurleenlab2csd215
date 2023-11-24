@@ -33,3 +33,11 @@ let finestTeams = Teams |> List.filter (fun team -> team.Stats.Wins > team.Stats
 
 finestTeams |> List.iter (fun team -> printfn "Team Name: %s" team.Name)
 finestTeams |> List.iter (fun team -> printfn "Team wins: %d" team.Stats.Wins)
+
+let calculateScsPercentile team = float team.Stats.Wins / float (team.Stats.Wins + team.Stats.Losses) * 100.0
+
+let ScsPercentiles =  finestTeams |> List.map calculateScsPercentile
+
+let ag = List.average ScsPercentiles
+
+printfn "The Percentile Of Team %f" ag
