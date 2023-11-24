@@ -11,22 +11,25 @@ type Stats = {
     Losses:int
 }
 
-type Team = {
+type Teams = {
     Name: string
     Coach: Coach
-    Stats: stats
+    Stats: Stats
 }
 
 
 // Create a list of 5 teams
-let teams = [
-    {Name = "Los Angeles Lakers"; Coach = { Name = "Darvin Ham"; FormerPlayer = true } ; stats = { Wins = 3503 ; Losses = 2419 }}
-    {Name = "Atlanta Hawks"; Coach = { Name = "Quin Snyder"; FormerPlayer = false } ; stats = { Wins = 2891 ;Losses = 2964 }}
-    {Name = "Boston Celtics"; Coach = { Name = "Joe Mazzulla"; FormerPlayer = false } ; stats = { Wins = 3570 ;Losses = 2462 }}
-    {Name = "Chicago Bulls"; Coach = { Name = "Billy Donovan"; FormerPlayer = true } ; stats = { Wins = 2344 ;Losses = 2254 }}
-    {Name = "Toronto Raptors"; Coach = { Name = "Darko Rajakovic"; FormerPlayer = false } ; stats = { Wins = 1071 ;Losses = 1157 }}
+let Teams = [
+    {Name = "Los Angeles Lakers"; Coach = { Name = "Darvin Ham"; FormerPlayer = true } ; Stats = { Wins = 3503 ; Losses = 2419 }}
+    {Name = "Atlanta Hawks"; Coach = { Name = "Quin Snyder"; FormerPlayer = false } ; Stats = { Wins = 2891 ;Losses = 2964 }}
+    {Name = "Boston Celtics"; Coach = { Name = "Joe Mazzulla"; FormerPlayer = false } ; Stats = { Wins = 3570 ;Losses = 2462 }}
+    {Name = "Chicago Bulls"; Coach = { Name = "Billy Donovan"; FormerPlayer = true } ; Stats = { Wins = 2344 ;Losses = 2254 }}
+    {Name = "Toronto Raptors"; Coach = { Name = "Darko Rajakovic"; FormerPlayer = false } ; Stats = { Wins = 1071 ;Losses = 1157 }}
 ]
 
-    
+let finestTeams = Teams |> List.filter (fun team -> team.Stats.Wins > team.Stats.Losses)
 
+//printfn "%A" finestTeam
 
+finestTeams |> List.iter (fun team -> printfn "Team Name: %s" team.Name)
+finestTeams |> List.iter (fun team -> printfn "Team wins: %d" team.Stats.Wins)
