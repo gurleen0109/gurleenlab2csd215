@@ -41,3 +41,22 @@ let ScsPercentiles =  finestTeams |> List.map calculateScsPercentile
 let ag = List.average ScsPercentiles
 
 printfn "The Percentile Of Team %f" ag
+
+type Cuisn =
+    | Koreannn
+    | Turkishhh
+
+type Movietype =
+    | Rgl
+    | IMAX
+    | DBOX
+    | Rglwithsnks
+    | IMAXwithsnks
+    | DBOXwithsnks
+
+type Actvty
+    | Brdgames
+    | Chill
+    | Movie of Movietype
+    | Restaurant of Cuisn
+    | Longdrive of int * float
